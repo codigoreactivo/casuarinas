@@ -1,0 +1,47 @@
+[
+    {
+        "nombre": "ANTOINETTE BUZZIO",
+        "empresa": "Pro Sales Latam",
+        "celular": "968819199",
+        "correos": "jorge.vargas@prosaleslatam.com",
+        "web": "Si - Principal",
+        "paneles": "",
+        "mail_paneles": ""
+    },
+    {
+        "nombre": "LUIS GONZALES GONZALES",
+        "empresa": "Corredores Asociados",
+        "celular": "999641325",
+        "correos": "gonzaleslax@hotmail.com",
+        "web": "Si",
+        "paneles": "",
+        "mail_paneles": ""
+    },
+    {
+        "nombre": "CRISTINA LUNA VALEGA",
+        "empresa": "Cristina Luna",
+        "celular": "970340325",
+        "correos": "crislunav@gmail.com",
+        "web": "Si",
+        "paneles": "Si",
+        "mail_paneles": "agutierrez@cinmobiliariac.com.pe"
+    },
+    {
+        "nombre": "CECILIA IBARRA GARCIA-REMAX",
+        "empresa": "REMAX",
+        "celular": "988685858",
+        "correos": "ceciliaibarraagente@gmail.com",
+        "web": "Si",
+        "paneles": "x Confirmar",
+        "mail_paneles": "c.ibarra@remaxchampions-peru.com"
+    },
+    {
+        "nombre": "PATRICIA MURO LAVALLE-REMAX",
+        "empresa": "REMAX",
+        "celular": "975103119",
+        "correos": "capamull@gmail.com",
+        "web": "Si",
+        "paneles": "x Confirmar",
+        "mail_paneles": "patricia.muro@remax-pro.com"
+    }
+]

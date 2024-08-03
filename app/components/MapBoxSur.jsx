@@ -1,0 +1,360 @@
+'use client';
+import React, { useRef, useEffect, useState } from 'react';
+import mapboxgl from '!mapbox-gl'; // eslint-disable-line import/no-webpack-loader-syntax
+import * as turf from '@turf/turf'; // Importar turf
+import geojson from '../assets/areassur.json';
+import StatusProp from './StatusProp';
+import PopupProp from './PopupProp';
+import MapControls from './MapControls'; // Asegúrate de que la ruta sea correcta
+
+mapboxgl.accessToken = 'pk.eyJ1IjoiamVzdXNqaG9lbCIsImEiOiJjbHhtbjQ4Y2MwN3duMnFwbDF1aXE2MG8zIn0.Vq7TZeCb2LprzzOASGi25Q';
+const numbrokers = "https://api.whatsapp.com/send?phone=51968819199";
+
+geojson.features.forEach((feature) => {
+    feature.id = feature.properties.fid;
+});
+
+const MapBoxComponent = () => {
+    const mapContainer = useRef(null);
+    const map = useRef(null);
+    const [lng, setLng] = useState(-76.9660444);
+    const [lat, setLat] = useState(-12.1265788);
+    const [zoom, setZoom] = useState(16.5);
+    const [pitch, setPitch] = useState(0); // Estado para el pitch
+    const [popupContent, setPopupContent] = useState(null);
+
+    useEffect(() => {
+        if (map.current) return; // initialize map only once
+
+        map.current = new mapboxgl.Map({
+            container: mapContainer.current,
+            style: 'mapbox://styles/jesusjhoel/clyqqe2su02cz01p87l2xa3s1',
+            center: [lng, lat],
+            zoom: zoom,
+            pitch: pitch, // Inicializa el pitch
+        });
+
+        map.current.on('load', () => {
+
+            console.log("Mapa cargado.");
+
+            map.current.addSource('places', {
+                type: 'geojson',
+                data: geojson
+            });
+
+            map.current.addLayer({
+                id: 'places',
+                type: 'fill',
+                source: 'places',
+                layout: {},
+                paint: {
+                    'fill-color': [
+                        'match',
+                        ['get', 'Zona'],
+                        'Ñ1', '#fff', // Color para Zona0
+                        'M1', '#fff', // Color para Zona1
+                        'O1', '#fff', // Color para Zona2
+                        'P1', '#fff', // Color para Zona3
+                        'Q1', '#fff', // Color para Zona4
+                        'R1', '#fff', // Color para Zona5
+                        'S1', '#fff', // Color para Zona6
+                        '#007cbf' // Color por defecto
+                    ],
+                    'fill-opacity': [
+                        'case',
+                        ['boolean', ['feature-state', 'hover'], false],
+                        0.7, // Opacidad de hover
+                        0.5 // Opacidad por defecto
+                    ]
+                }
+            });
+
+            map.current.addLayer({
+                id: 'places-outline',
+                type: 'line',
+                source: 'places',
+                layout: {},
+                paint: {
+                    'line-color': '#fff',
+                    'line-width': 2 // Ajusta este valor para cambiar el grosor del borde
+                }
+            });
+
+            // Define el mapeo de imágenes fuera de la función
+            const imageMapping = {
+                "Disponible": "icons/flag-cas-green.png",
+                "Vendido": "icons/flag-cas-orange.png",
+                "Entregado": "icons/flag-cas-orange.png",
+                "Reservado": "icons/flag-y-map.png"
+            };
+
+            // Función para cargar todas las imágenes
+            const loadAllImages = () => {
+                const estadosVenta = Object.keys(imageMapping);
+                estadosVenta.forEach((estadoVenta) => {
+                    const imageSrc = imageMapping[estadoVenta];
+                    if (imageSrc && !map.current.hasImage(`icon-${estadoVenta}`)) {
+                        const image = new Image();
+                        image.onload = () => {
+                            map.current.addImage(`icon-${estadoVenta}`, image);
+                            // Añadir la capa solo después de cargar todas las imágenes
+                            if (estadosVenta.every(ev => map.current.hasImage(`icon-${ev}`))) {
+                                addLayerForStates();
+                            }
+                        };
+                        image.src = imageSrc;
+                    }
+                });
+            };
+
+            // Función para añadir la capa al mapa
+            const addLayerForStates = () => {
+                if (!map.current.getLayer('places-label')) {
+                    try {
+                        map.current.addLayer({
+                            id: 'places-label',
+                            type: 'symbol',
+                            source: 'places',
+                            layout: {
+                                'text-field': '{Zona} - {NumTerreno}',
+                                'text-font': [
+                                    'DIN Offc Pro Medium',
+                                    'Arial Unicode MS Bold'
+                                ],
+                                'text-size': 10,
+                                'icon-image': [
+                                    'case',
+                                    ['==', ['get', 'EstadoVenta'], 'Disponible'], 'icon-Disponible',
+                                    ['==', ['get', 'EstadoVenta'], 'Vendido'], 'icon-Vendido',
+                                    ['==', ['get', 'EstadoVenta'], 'Entregado'], 'icon-Entregado',
+                                    ['==', ['get', 'EstadoVenta'], 'Reservado'], 'icon-Reservado',
+                                    ''
+                                ],
+                                'icon-size': 0.6,
+                                'icon-offset': [8, -5],
+                                'text-offset': [0, 1],
+                                'text-anchor': 'top'
+                            }
+                        });
+                        console.log('Capa añadida con éxito para todos los estados de venta');
+                    } catch (error) {
+                        console.error('Error al añadir la capa para los estados de venta:', error);
+                    }
+                }
+            };
+
+            // Cargar todas las imágenes necesarias para los estados de venta en el mapa
+            loadAllImages();
+
+            let hoveredStateId = null;
+
+            map.current.on('mousemove', 'places', (e) => {
+                map.current.getCanvas().style.cursor = 'pointer';
+
+                if (hoveredStateId !== null) {
+                    map.current.setFeatureState(
+                        { source: 'places', id: hoveredStateId },
+                        { hover: false }
+                    );
+                }
+
+                hoveredStateId = e.features[0].id;
+
+                map.current.setFeatureState(
+                    { source: 'places', id: hoveredStateId },
+                    { hover: true }
+                );
+            });
+
+            map.current.on('mouseleave', 'places', () => {
+                map.current.getCanvas().style.cursor = '';
+
+                if (hoveredStateId !== null) {
+                    map.current.setFeatureState(
+                        { source: 'places', id: hoveredStateId },
+                        { hover: false }
+                    );
+                }
+
+                hoveredStateId = null;
+            });
+
+            map.current.on('click', 'places', (e) => {
+                const feature = e.features[0];
+                const coordinates = e.lngLat;
+                const terreno = feature.properties.NumTerreno;
+                const areaterreno = feature.properties.AreaTerreno;
+                const perimetro = feature.properties.Perimetro;
+                const izquierda = feature.properties.Izquierda;
+                const derecha = feature.properties.Derecha;
+                const frente = feature.properties.Frente;
+                const fondo = feature.properties.Fondo;
+                const tipoterreno = feature.properties.TipoTerreno;
+                const estadoventa = feature.properties.EstadoVenta;
+                const zona = feature.properties.Zona;
+                setPopupContent({
+                    coordinates,
+                    terreno,
+                    areaterreno,
+                    perimetro,
+                    izquierda,
+                    derecha,
+                    frente,
+                    fondo,
+                    tipoterreno,
+                    estadoventa,
+                    zona
+                });
+
+                const bbox = turf.bbox(feature.geometry); // Calcular bounding box
+
+                map.current.fitBounds(bbox, {
+                    padding: 50, // Opcional: agregar un padding
+                    duration: 1000, // Duración de la animación en ms
+                    zoom: zoom + 2 // Ajusta el nivel de zoom deseado
+                });
+            });
+        });
+
+    }, []);
+
+    // Actualiza el mapa cuando cambian las coordenadas o el zoom
+    useEffect(() => {
+        if (map.current) {
+            map.current.easeTo({
+                center: [lng, lat],
+                zoom: zoom,
+                pitch: pitch,
+                duration: 1000 // Duración de la animación en ms
+            });
+        }
+
+    }, [lng, lat, zoom, pitch]);
+
+    const handleHome = () => {
+        console.log('Home button pressed');
+        map.current.easeTo({
+            center: [-76.9660444, -12.1265788],
+            zoom: 16.5,
+            pitch: 0,
+            duration: 1000 // Duración de la animación en ms
+        });
+    };
+
+    const handleMoveLeft = () => {
+        console.log('Move Left button pressed');
+        map.current.easeTo({
+            center: [lng - 0.001, lat],
+            duration: 1000 // Duración de la animación en ms
+        });
+        setLng((prevLng) => prevLng - 0.001);
+    };
+
+    const handleMoveRight = () => {
+        console.log('Move Right button pressed');
+        map.current.easeTo({
+            center: [lng + 0.001, lat],
+            duration: 1000
+        });
+        setLng((prevLng) => prevLng + 0.001);
+    };
+
+    const handleMoveUp = () => {
+        console.log('Move Up button pressed');
+        map.current.easeTo({
+            center: [lng, lat + 0.001],
+            duration: 1000
+        });
+        setLat((prevLat) => prevLat + 0.001);
+    };
+
+    const handleMoveDown = () => {
+        console.log('Move Down button pressed');
+        map.current.easeTo({
+            center: [lng, lat - 0.001],
+            duration: 1000
+        });
+        setLat((prevLat) => prevLat - 0.001);
+    };
+
+    const handleZoomIn = () => {
+        console.log('Zoom In button pressed');
+        map.current.easeTo({
+            zoom: zoom + 1,
+            duration: 1000
+        });
+        setZoom((prevZoom) => prevZoom + 1);
+    };
+
+    const handleZoomOut = () => {
+        console.log('Zoom Out button pressed');
+        map.current.easeTo({
+            zoom: zoom - 1,
+            duration: 1000
+        });
+        setZoom((prevZoom) => prevZoom - 1);
+    };
+
+    const handlePitchUp = () => {
+        console.log('Pitch Up button pressed');
+        setPitch((prevPitch) => Math.min(prevPitch + 5, 60)); // Incrementa el pitch pero limita a 60 grados
+        map.current.easeTo({
+            pitch: Math.min(pitch + 5, 60),
+            duration: 1000
+        });
+    };
+
+    const handlePitchDown = () => {
+        console.log('Pitch Down button pressed');
+        setPitch((prevPitch) => Math.max(prevPitch - 5, 0)); // Decrementa el pitch pero limita a 0 grados
+        map.current.easeTo({
+            pitch: Math.max(pitch - 5, 0),
+            duration: 1000
+        });
+    };
+
+    const handleExpand = () => {
+        console.log('Expand button pressed');
+
+        // Check if the fullscreen control is already added
+        if (!map.current.hasControl('fullscreen')) {
+            const fullscreenControl = new mapboxgl.FullscreenControl();
+            map.current.addControl(fullscreenControl, 'top-right');
+            map.current.fullscreenControl = fullscreenControl;
+        }
+
+        // Toggle fullscreen state
+        if (!document.fullscreenElement) {
+            map.current.fullscreenControl._container.requestFullscreen();
+        } else {
+            document.exitFullscreen();
+        }
+    };
+
+    return (
+        <div className='relative h-full overflow-hidden'>
+            <div ref={mapContainer} className="map-container relative h-full" />
+            <PopupProp popupContent={popupContent} setPopupContent={setPopupContent} numbrokers={numbrokers} />
+            <StatusProp />
+            <MapControls
+                onHome={handleHome}
+                onMoveLeft={handleMoveLeft}
+                onMoveRight={handleMoveRight}
+                onMoveUp={handleMoveUp}
+                onMoveDown={handleMoveDown}
+                onPitchUp={handlePitchUp}
+                onPitchDown={handlePitchDown}
+                onZoomIn={handleZoomIn}
+                onZoomOut={handleZoomOut}
+                onExpand={handleExpand}
+            />
+        </div>
+    );
+};
+
+export default function App() {
+    return (
+        <MapBoxComponent />
+    );
+}
