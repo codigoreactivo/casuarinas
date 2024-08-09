@@ -28,6 +28,7 @@ const MapBoxComponent = () => {
     const [zoom, setZoom] = useState(17.4);
     const [pitch, setPitch] = useState(0); // Estado para el pitch
     const [popupContent, setPopupContent] = useState(null);
+    const [clickedStateId, setClickedStateId] = useState(null);
 
     useEffect(() => {
         if (map.current) return; // initialize map only once
@@ -54,17 +55,32 @@ const MapBoxComponent = () => {
                 paint: {
                     'fill-color': [
                         'case',
-                        ['boolean', ['feature-state', 'hover'], false],
-                        '#fff', // Color de hover
+                        ['boolean', ['feature-state', 'focus'], false], // Si está clicked
+                        '#808080', // Color para el estado clicked
+                        ['boolean', ['feature-state', 'hover'], false], // Si está hover
+                        '#fff', // Color para el estado hover
                         '#fff' // Color por defecto
                     ],
                     'fill-opacity': [
                         'case',
-                        ['boolean', ['feature-state', 'hover'], false],
-                        0.7, // Opacidad de hover
+                        ['boolean', ['feature-state', 'focus'], false], // Si está clicked
+                        0.9, // Opacidad para el estado clicked
+                        ['boolean', ['feature-state', 'hover'], false], // Si está hover
+                        0.7, // Opacidad para el estado hover
                         0.5 // Opacidad por defecto
                     ],
-                    'fill-outline-color': '#000000',
+                    'fill-outline-color': '#000000', // El borde permanece igual
+                }
+            });
+
+            map.current.addLayer({
+                id: 'places-outline',
+                type: 'line',
+                source: 'places',
+                layout: {},
+                paint: {
+                    'line-color': '#fff',
+                    'line-width': 3 // Ajusta este valor para cambiar el grosor del borde
                 }
             });
 
@@ -130,18 +146,49 @@ const MapBoxComponent = () => {
                     }
                 }
             };
-
             // Cargar todas las imágenes necesarias para los estados de venta en el mapa
             loadAllImages();
 
-            map.current.addLayer({
-                id: 'places-outline',
-                type: 'line',
-                source: 'places',
-                layout: {},
-                paint: {
-                    'line-color': '#fff',
-                    'line-width': 2 // Ajusta este valor para cambiar el grosor del borde
+            //Cliceck para cambiar el estado de clic
+            // Agregar evento de clic
+            //map.current.on('click', 'places-clicked', (e) => {
+            //    const feature = e.features[0];
+            //    const featureId = feature.id;
+            //    console.log('Feature clicked:', featureId);
+            //
+            //    // Desmarcar el polígono previamente seleccionado
+            //    if (selectedStateId !== null && selectedStateId !== featureId) {
+            //        console.log('Desmarcando el polígono:', selectedStateId);
+            //        map.current.setFeatureState(
+            //            { source: 'places', id: selectedStateId },
+            //            { selected: false }
+            //        );
+            //    }
+            //});
+
+            let focusedFeatureId = null;
+
+            // Evento de clic para aplicar el estado 'focus'
+            map.current.on('click', 'places', (e) => {
+                const clickedStateId = e.features[0].id;
+
+                // Quitar el estado 'focus' de la característica actualmente enfocada, si existe
+                if (focusedFeatureId !== null) {
+                    map.current.setFeatureState(
+                        { source: 'places', id: focusedFeatureId },
+                        { focus: false }
+                    );
+                }
+
+                // Aplicar el estado 'focus' a la característica clickeada
+                if (clickedStateId !== null) {
+                    map.current.setFeatureState(
+                        { source: 'places', id: clickedStateId },
+                        { focus: true }
+                    );
+                    focusedFeatureId = clickedStateId; // Actualizar el ID de la característica enfocada
+                } else {
+                    focusedFeatureId = null; // No hay ninguna característica enfocada
                 }
             });
 
@@ -179,6 +226,21 @@ const MapBoxComponent = () => {
                 hoveredStateId = null;
             });
 
+            //map.current.on('click', 'places', (e) => {
+            //    const clickedId = e.features[0].id;
+            //    if (clickedId !== clickedStateId) {
+            //        // Si el id clicado es diferente al almacenado, actualizar el estado
+            //        setClickedStateId(clickedId);
+            //        map.current.setFeatureState(
+            //            { source: 'places', id: clickedId },
+            //            { clicked: true }
+            //        );
+            //    } else {
+            //        // Si el id clicado es el mismo, restablecer el estado
+            //        setClickedStateId(null);
+            //    }
+            //});
+
             // Optionally, add a popup on click
             map.current.on('click', 'places', (e) => {
                 const feature = e.features[0];
@@ -215,7 +277,7 @@ const MapBoxComponent = () => {
                 });
             });
         });
-    }, [lng, lat, zoom, pitch]);
+    }, [lng, lat, zoom, pitch, clickedStateId]);
 
     // Actualiza el mapa cuando cambian las coordenadas, el zoom o el pitch
     useEffect(() => {

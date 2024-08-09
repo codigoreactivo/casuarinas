@@ -22,6 +22,8 @@ const MapBoxComponent = () => {
     const [zoom, setZoom] = useState(16.5);
     const [pitch, setPitch] = useState(0); // Estado para el pitch
     const [popupContent, setPopupContent] = useState(null);
+    const [clickedStateId, setClickedStateId] = useState(null);
+
 
     useEffect(() => {
         if (map.current) return; // initialize map only once
@@ -50,23 +52,22 @@ const MapBoxComponent = () => {
                 layout: {},
                 paint: {
                     'fill-color': [
-                        'match',
-                        ['get', 'Zona'],
-                        'Ñ1', '#fff', // Color para Zona0
-                        'M1', '#fff', // Color para Zona1
-                        'O1', '#fff', // Color para Zona2
-                        'P1', '#fff', // Color para Zona3
-                        'Q1', '#fff', // Color para Zona4
-                        'R1', '#fff', // Color para Zona5
-                        'S1', '#fff', // Color para Zona6
-                        '#007cbf' // Color por defecto
+                        'case',
+                        ['boolean', ['feature-state', 'focus'], false], // Si está clicked
+                        '#808080', // Color para el estado clicked
+                        ['boolean', ['feature-state', 'hover'], false], // Si está hover
+                        '#fff', // Color para el estado hover
+                        '#fff' // Color por defecto
                     ],
                     'fill-opacity': [
                         'case',
-                        ['boolean', ['feature-state', 'hover'], false],
-                        0.7, // Opacidad de hover
+                        ['boolean', ['feature-state', 'focus'], false], // Si está clicked
+                        0.9, // Opacidad para el estado clicked
+                        ['boolean', ['feature-state', 'hover'], false], // Si está hover
+                        0.7, // Opacidad para el estado hover
                         0.5 // Opacidad por defecto
-                    ]
+                    ],
+                    'fill-outline-color': '#000000', // El borde permanece igual
                 }
             });
 
@@ -146,6 +147,32 @@ const MapBoxComponent = () => {
 
             // Cargar todas las imágenes necesarias para los estados de venta en el mapa
             loadAllImages();
+
+            let focusedFeatureId = null;
+
+            // Evento de clic para aplicar el estado 'focus'
+            map.current.on('click', 'places', (e) => {
+                const clickedStateId = e.features[0].id;
+
+                // Quitar el estado 'focus' de la característica actualmente enfocada, si existe
+                if (focusedFeatureId !== null) {
+                    map.current.setFeatureState(
+                        { source: 'places', id: focusedFeatureId },
+                        { focus: false }
+                    );
+                }
+
+                // Aplicar el estado 'focus' a la característica clickeada
+                if (clickedStateId !== null) {
+                    map.current.setFeatureState(
+                        { source: 'places', id: clickedStateId },
+                        { focus: true }
+                    );
+                    focusedFeatureId = clickedStateId; // Actualizar el ID de la característica enfocada
+                } else {
+                    focusedFeatureId = null; // No hay ninguna característica enfocada
+                }
+            });
 
             let hoveredStateId = null;
 
