@@ -53,6 +53,8 @@ const MapBoxComponent = () => {
                 paint: {
                     'fill-color': [
                         'case',
+                        ['==', ['get', 'EstadoVenta'], 'Entregado'], // Si EstadoVenta es "Vendido"
+                        '#474747', // Color para el estado "Vendido"
                         ['boolean', ['feature-state', 'focus'], false], // Si está clicked
                         '#808080', // Color para el estado clicked
                         ['boolean', ['feature-state', 'hover'], false], // Si está hover
@@ -209,30 +211,46 @@ const MapBoxComponent = () => {
 
             map.current.on('click', 'places', (e) => {
                 const feature = e.features[0];
-                const coordinates = e.lngLat;
-                const terreno = feature.properties.NumTerreno;
-                const areaterreno = feature.properties.AreaTerreno;
-                const perimetro = feature.properties.Perimetro;
-                const izquierda = feature.properties.Izquierda;
-                const derecha = feature.properties.Derecha;
-                const frente = feature.properties.Frente;
-                const fondo = feature.properties.Fondo;
-                const tipoterreno = feature.properties.TipoTerreno;
-                const estadoventa = feature.properties.EstadoVenta;
-                const zona = feature.properties.Zona;
-                setPopupContent({
-                    coordinates,
-                    terreno,
-                    areaterreno,
-                    perimetro,
-                    izquierda,
-                    derecha,
-                    frente,
-                    fondo,
-                    tipoterreno,
-                    estadoventa,
-                    zona
-                });
+                const estadoVenta = feature.properties.EstadoVenta;
+
+                // Verificar si EstadoVenta es "Disponible"
+                if (estadoVenta === 'Disponible') {
+                    const coordinates = e.lngLat;
+                    const terreno = feature.properties.NumTerreno;
+                    const areaterreno = feature.properties.AreaTerreno;
+                    const perimetro = feature.properties.Perimetro;
+                    const izquierda = feature.properties.Izquierda;
+                    const derecha = feature.properties.Derecha;
+                    const frente = feature.properties.Frente;
+                    const fondo = feature.properties.Fondo;
+                    const tipoterreno = feature.properties.TipoTerreno;
+
+                    setPopupContent({
+                        coordinates,
+                        terreno,
+                        areaterreno,
+                        perimetro,
+                        izquierda,
+                        derecha,
+                        frente,
+                        fondo,
+                        tipoterreno,
+                        estadoventa: estadoVenta
+                    });
+
+                    // Obtener el bounding box del polígono para el zoom
+                    const bbox = turf.bbox(feature.geometry); // Asegúrate de tener turf.js instalado
+
+                    map.current.fitBounds(bbox, {
+                        padding: 50, // Opcional: agregar un padding
+                        duration: 1000, // Duración de la animación en ms
+                        zoom: zoom + 2 // Ajusta el nivel de zoom deseado
+                    });
+                } else {
+                    // Restablecer el estado del popup a null si EstadoVenta no es "Disponible"
+                    setPopupContent(null);
+                }
+
 
                 const bbox = turf.bbox(feature.geometry); // Calcular bounding box
 
