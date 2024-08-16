@@ -9,7 +9,7 @@ import * as turf from '@turf/turf'; // Importar turf
 
 mapboxgl.accessToken = 'pk.eyJ1IjoiamVzdXNqaG9lbCIsImEiOiJjbHhtbjQ4Y2MwN3duMnFwbDF1aXE2MG8zIn0.Vq7TZeCb2LprzzOASGi25Q';
 
-import geojson from '../assets/areascima.json';
+import geojson from '../assets/cimamap.json';
 
 // Asignar fid como id a cada característica si no está presente
 geojson.features.forEach((feature) => {
@@ -55,8 +55,8 @@ const MapBoxComponent = () => {
                 paint: {
                     'fill-color': [
                         'case',
-                        ['==', ['get', 'EstadoVenta'], 'Entregado'], // Si EstadoVenta es "Vendido"
-                        '#474747', // Color para el estado "Vendido"
+                        //['==', ['get', 'EstadoVenta'], 'Entregado'], // Si EstadoVenta es "Vendido"
+                        //'#474747', // Color para el estado "Vendido"
                         ['boolean', ['feature-state', 'focus'], false], // Si está clicked
                         '#808080', // Color para el estado clicked
                         ['boolean', ['feature-state', 'hover'], false], // Si está hover
@@ -153,6 +153,37 @@ const MapBoxComponent = () => {
             // Cargar todas las imágenes necesarias para los estados de venta en el mapa
             loadAllImages();
 
+            // Añadir la capa al mapa
+            try {
+                console.log('Añadiendo capa al mapa...');
+                console.log('Datos geojson:', geojson);
+
+                map.current.addLayer({
+                    id: 'custom-text-layer',
+                    type: 'symbol',
+                    source: {
+                        type: 'geojson',
+                        data: geojson
+                    },
+                    layout: {
+                        'text-field': ['get', 'name'], // Usar la propiedad 'name' para el texto
+                        'text-font': [
+                            'DIN Offc Pro Medium',
+                            'Arial Unicode MS Bold'
+                        ],
+                        'text-size': 16,
+                        'text-offset': [0, -1],
+                        'text-anchor': 'top',
+                        'text-allow-overlap': true // Permitir superposición de texto
+                    },
+                    paint: {
+                        'text-color': 'white'
+                    }
+                });
+                console.log('Capa añadida con éxito');
+            } catch (error) {
+                console.error('Error al añadir la capa:', error);
+            }
             //Cliceck para cambiar el estado de clic
             // Agregar evento de clic
             //map.current.on('click', 'places-clicked', (e) => {

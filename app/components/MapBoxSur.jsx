@@ -2,7 +2,7 @@
 import React, { useRef, useEffect, useState } from 'react';
 import mapboxgl from '!mapbox-gl'; // eslint-disable-line import/no-webpack-loader-syntax
 import * as turf from '@turf/turf'; // Importar turf
-import geojson from '../assets/areassur.json';
+import geojson from '../assets/surmap.json';
 import StatusProp from './StatusProp';
 import PopupProp from './PopupProp';
 import MapControls from './MapControls'; // Asegúrate de que la ruta sea correcta
@@ -53,10 +53,10 @@ const MapBoxComponent = () => {
                 paint: {
                     'fill-color': [
                         'case',
-                        ['==', ['get', 'EstadoVenta'], 'Entregado'], // Si EstadoVenta es "Vendido"
-                        '#474747', // Color para el estado "Vendido"
-                        ['boolean', ['feature-state', 'focus'], false], // Si está clicked
-                        '#808080', // Color para el estado clicked
+                        //['==', ['get', 'EstadoVenta'], 'Entregado'], // Si EstadoVenta es "Vendido"
+                        //'#474747', // Color para el estado "Vendido"
+                        //'#808080', // Color para el estado clicked
+                        //['boolean', ['feature-state', 'focus'], false], // Si está clicked
                         ['boolean', ['feature-state', 'hover'], false], // Si está hover
                         '#fff', // Color para el estado hover
                         '#fff' // Color por defecto
@@ -66,7 +66,7 @@ const MapBoxComponent = () => {
                         ['boolean', ['feature-state', 'focus'], false], // Si está clicked
                         0.9, // Opacidad para el estado clicked
                         ['boolean', ['feature-state', 'hover'], false], // Si está hover
-                        0.7, // Opacidad para el estado hover
+                        0.8, // Opacidad para el estado hover
                         0.5 // Opacidad por defecto
                     ],
                     'fill-outline-color': '#000000', // El borde permanece igual
@@ -146,9 +146,40 @@ const MapBoxComponent = () => {
                     }
                 }
             };
-
             // Cargar todas las imágenes necesarias para los estados de venta en el mapa
             loadAllImages();
+
+            // Añadir la capa al mapa
+            try {
+                console.log('Añadiendo capa al mapa...');
+                console.log('Datos geojson:', geojson);
+
+                map.current.addLayer({
+                    id: 'custom-text-layer',
+                    type: 'symbol',
+                    source: {
+                        type: 'geojson',
+                        data: geojson
+                    },
+                    layout: {
+                        'text-field': ['get', 'name'], // Usar la propiedad 'name' para el texto
+                        'text-font': [
+                            'DIN Offc Pro Medium',
+                            'Arial Unicode MS Bold'
+                        ],
+                        'text-size': 16,
+                        'text-offset': [0, -1],
+                        'text-anchor': 'top',
+                        'text-allow-overlap': true // Permitir superposición de texto
+                    },
+                    paint: {
+                        'text-color': 'white' // Color del texto
+                    }
+                });
+                console.log('Capa añadida con éxito');
+            } catch (error) {
+                console.error('Error al añadir la capa:', error);
+            }
 
             let focusedFeatureId = null;
 
@@ -224,6 +255,7 @@ const MapBoxComponent = () => {
                     const frente = feature.properties.Frente;
                     const fondo = feature.properties.Fondo;
                     const tipoterreno = feature.properties.TipoTerreno;
+                    const zona = feature.properties.Zona;
 
                     setPopupContent({
                         coordinates,
@@ -235,7 +267,8 @@ const MapBoxComponent = () => {
                         frente,
                         fondo,
                         tipoterreno,
-                        estadoventa: estadoVenta
+                        estadoventa: estadoVenta,
+                        zona
                     });
 
                     // Obtener el bounding box del polígono para el zoom

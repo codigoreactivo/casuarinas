@@ -68591,6 +68591,45 @@
                 "type": "Polygon"
             },
             "id": 130
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "name": "Parque"
+            },
+            "geometry": {
+                "coordinates": [
+                    -76.96555599207204,
+                    -12.12650091765461
+                ],
+                "type": "Point"
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "name": "Parque"
+            },
+            "geometry": {
+                "coordinates": [
+                    -76.96312281141662,
+                    -12.127167067325885
+                ],
+                "type": "Point"
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "name": "Parque"
+            },
+            "geometry": {
+                "coordinates": [
+                    -76.96505726501279,
+                    -12.128250940885138
+                ],
+                "type": "Point"
+            }
         }
     ]
 }

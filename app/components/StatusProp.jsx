@@ -13,6 +13,10 @@ const StatusProp = () => {
                     <BsFlagFill className='text-[#DB570F] text-lg' />
                     <p className='text-sm font-medium text-[#DB570F]'>Entregado</p>
                 </div>
+                <div className='flex flex-row gap-2 items-center bg-[#808080]/10 py-2 px-3 rounded-lg'>
+                    <BsFlagFill className='text-gray-700 text-lg' />
+                    <p className='text-sm font-medium 0 text-gray-800'>Separado</p>
+                </div>
             </div>
         </div>
     );
