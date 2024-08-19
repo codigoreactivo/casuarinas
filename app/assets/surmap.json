@@ -9,7 +9,7 @@
                 "TipoTerreno": "Lote",
                 "NumTerreno": 1,
                 "Zona": "Q1",
-                "EstadoVenta": ""
+                "EstadoVenta": "Entregado"
             },
             "geometry": {
                 "type": "Polygon",
@@ -658,7 +658,7 @@
                     ]
                 ]
             },
-            "id": 1
+            "id": 0
         },
         {
             "type": "Feature",
@@ -2924,7 +2924,7 @@
                 "TipoTerreno": "Lote",
                 "NumTerreno": 2,
                 "Zona": "Q1",
-                "EstadoVenta": ""
+                "EstadoVenta": "Entregado"
             },
             "geometry": {
                 "type": "Polygon",
@@ -5921,7 +5921,7 @@
                 "TipoTerreno": "Lote",
                 "Zona": "Ñ1",
                 "NumTerreno": 12,
-                "EstadoVenta": ""
+                "EstadoVenta": "Entregado"
             },
             "geometry": {
                 "type": "Polygon",
@@ -6930,7 +6930,7 @@
                     ]
                 ]
             },
-            "id": 17
+            "id": 14
         },
         {
             "type": "Feature",
@@ -25730,7 +25730,7 @@
                 "TipoTerreno": "Lote",
                 "Zona": "O1",
                 "NumTerreno": 2,
-                "EstadoVenta": ""
+                "EstadoVenta": "Entregado"
             },
             "geometry": {
                 "type": "Polygon",
@@ -25764,7 +25764,7 @@
                     ]
                 ]
             },
-            "id": 49
+            "id": 43
         },
         {
             "type": "Feature",
@@ -25821,7 +25821,8 @@
                 "fid": 52,
                 "TipoTerreno": "Lote",
                 "Zona": "O1",
-                "NumTerreno": 1
+                "NumTerreno": 1,
+                "EstadoVenta": "Entregado"
             },
             "geometry": {
                 "type": "Polygon",
@@ -25860,7 +25861,7 @@
                     ]
                 ]
             },
-            "id": 51
+            "id": 45
         },
         {
             "type": "Feature",
@@ -29995,7 +29996,7 @@
                     ]
                 ]
             },
-            "id": 61
+            "id": 54
         },
         {
             "type": "Feature",
@@ -30539,7 +30540,7 @@
                     ]
                 ]
             },
-            "id": 62
+            "id": 55
         },
         {
             "type": "Feature",
@@ -31571,7 +31572,7 @@
                 "fid": 65,
                 "TipoTerreno": "Lote",
                 "Zona": "O1",
-                "NumTerreno": 25,
+                "NumTerreno": 24,
                 "EstadoVenta": "Disponible",
                 "AreaTerreno": ""
             },
@@ -32942,7 +32943,7 @@
                     ]
                 ]
             },
-            "id": 64
+            "id": 57
         },
         {
             "type": "Feature",
@@ -32950,7 +32951,7 @@
                 "fid": 66,
                 "TipoTerreno": "Lote",
                 "Zona": "O1",
-                "NumTerreno": 24,
+                "NumTerreno": 23,
                 "EstadoVenta": "Disponible",
                 "AreaTerreno": 1122.54,
                 "Perimetro": 135.77,
@@ -33486,7 +33487,7 @@
                     ]
                 ]
             },
-            "id": 65
+            "id": 58
         },
         {
             "type": "Feature",
@@ -34510,7 +34511,7 @@
                     ]
                 ]
             },
-            "id": 66
+            "id": 59
         },
         {
             "type": "Feature",
@@ -34518,7 +34519,7 @@
                 "fid": 68,
                 "TipoTerreno": "Lote",
                 "Zona": "O1",
-                "NumTerreno": 23,
+                "NumTerreno": 22,
                 "EstadoVenta": "Disponible",
                 "AreaTerreno": 922.79,
                 "Perimetro": 132.44,
@@ -34564,7 +34565,7 @@
                     ]
                 ]
             },
-            "id": 67
+            "id": 60
         },
         {
             "type": "Feature",
@@ -54157,7 +54158,7 @@
                     ]
                 ]
             },
-            "id": 100
+            "id": 91
         },
         {
             "type": "Feature",
@@ -68560,8 +68561,8 @@
             "properties": {
                 "fid": 131,
                 "TipoTerreno": "Lote",
-                "Zona": 9,
-                "NumTerreno": "R1"
+                "Zona": "R1",
+                "NumTerreno": 9
             },
             "geometry": {
                 "coordinates": [
@@ -68590,7 +68591,7 @@
                 ],
                 "type": "Polygon"
             },
-            "id": 130
+            "id": 120
         },
         {
             "type": "Feature",
