@@ -1983,7 +1983,8 @@
                 "TipoTerreno": "Lote",
                 "Zona": "Ñ1",
                 "NumTerreno": 21,
-                "EstadoVenta": "Entregado"
+                "EstadoVenta": "Entregado",
+                "Frente": ""
             },
             "geometry": {
                 "type": "Polygon",
@@ -2881,7 +2882,12 @@
                 "TipoTerreno": "Lote",
                 "Zona": "Ñ1",
                 "NumTerreno": 25,
-                "EstadoVenta": ""
+                "EstadoVenta": "Disponible",
+                "AreaTerreno": 556.56,
+                "Frente": 19.97,
+                "Derecha": 25.4,
+                "Izquierda": 28.18,
+                "Fondo": 21.7
             },
             "geometry": {
                 "type": "Polygon",
@@ -2915,7 +2921,7 @@
                     ]
                 ]
             },
-            "id": 5
+            "id": 4
         },
         {
             "type": "Feature",
@@ -2924,7 +2930,12 @@
                 "TipoTerreno": "Lote",
                 "NumTerreno": 2,
                 "Zona": "Q1",
-                "EstadoVenta": "Entregado"
+                "EstadoVenta": "Entregado",
+                "Frente": "",
+                "Derecha": "",
+                "Izquierda": "",
+                "Fondo": "",
+                "name": ""
             },
             "geometry": {
                 "type": "Polygon",
@@ -3582,7 +3593,9 @@
                 "TipoTerreno": "Lote",
                 "NumTerreno": 20,
                 "Zona": "Ñ1",
-                "EstadoVenta": "Entregado"
+                "EstadoVenta": "Entregado",
+                "Frente": "",
+                "Fondo": ""
             },
             "geometry": {
                 "type": "Polygon",
@@ -9605,7 +9618,7 @@
                     ]
                 ]
             },
-            "id": 23
+            "id": 19
         },
         {
             "type": "Feature",
@@ -10562,7 +10575,8 @@
                 "TipoTerreno": "Lote",
                 "Zona": "Ñ1",
                 "NumTerreno": 19,
-                "EstadoVenta": "Entregado"
+                "EstadoVenta": "Entregado",
+                "Perimetro": ""
             },
             "geometry": {
                 "type": "Polygon",
@@ -11820,7 +11834,9 @@
                 "TipoTerreno": "Lote",
                 "Zona": "Ñ1",
                 "NumTerreno": 18,
-                "EstadoVenta": "Entregado"
+                "EstadoVenta": "Entregado",
+                "AreaTerreno": "",
+                "Frente": ""
             },
             "geometry": {
                 "type": "Polygon",
@@ -12478,7 +12494,13 @@
                 "TipoTerreno": "Lote",
                 "Zona": "Ñ1",
                 "NumTerreno": 22,
-                "EstadoVenta": ""
+                "EstadoVenta": "Disponible",
+                "AreaTerreno": 697.59,
+                "Frente": 15.94,
+                "Derecha": 27.18,
+                "Izquierda": 37.32,
+                "Fondo": 34.14,
+                "Perimetro": 101.95
             },
             "geometry": {
                 "type": "Polygon",
@@ -13847,7 +13869,7 @@
                     ]
                 ]
             },
-            "id": 28
+            "id": 24
         },
         {
             "type": "Feature",
@@ -13856,8 +13878,13 @@
                 "TipoTerreno": "Lote",
                 "Zona": "Ñ1",
                 "NumTerreno": 23,
-                "EstadoVenta": "",
-                "Frente": ""
+                "EstadoVenta": "Disponible",
+                "Frente": 23.69,
+                "AreaTerreno": 656.33,
+                "Derecha": 30.36,
+                "Izquierda": 27.18,
+                "Fondo": 20.72,
+                "Perimetro": 101.95
             },
             "geometry": {
                 "type": "Polygon",
@@ -14866,7 +14893,7 @@
                     ]
                 ]
             },
-            "id": 29
+            "id": 25
         },
         {
             "type": "Feature",
@@ -16683,7 +16710,13 @@
                 "TipoTerreno": "Lote",
                 "Zona": "Ñ1",
                 "NumTerreno": 24,
-                "EstadoVenta": ""
+                "EstadoVenta": "Disponible",
+                "AreaTerreno": 571.48,
+                "Frente": 20.16,
+                "Derecha": 28.18,
+                "Izquierda": 30.36,
+                "Fondo": 18.99,
+                "Perimetro": 114.58
             },
             "geometry": {
                 "type": "Polygon",
@@ -16722,7 +16755,7 @@
                     ]
                 ]
             },
-            "id": 32
+            "id": 28
         },
         {
             "type": "Feature",
@@ -31574,7 +31607,12 @@
                 "Zona": "O1",
                 "NumTerreno": 24,
                 "EstadoVenta": "Disponible",
-                "AreaTerreno": ""
+                "AreaTerreno": 1122.54,
+                "Frente": 18.03,
+                "Derecha": 45.99,
+                "Izquierda": 48.35,
+                "Fondo": 23.4,
+                "Perimetro": 135.77
             },
             "geometry": {
                 "type": "Polygon",
@@ -32953,12 +32991,12 @@
                 "Zona": "O1",
                 "NumTerreno": 23,
                 "EstadoVenta": "Disponible",
-                "AreaTerreno": 1122.54,
+                "AreaTerreno": 922.79,
                 "Perimetro": 135.77,
-                "Frente": 18.03,
-                "Derecha": 45.99,
-                "Izquierda": 48.35,
-                "Fondo": 23.4
+                "Frente": 19.9,
+                "Derecha": 48.35,
+                "Izquierda": 43.65,
+                "Fondo": 20.54
             },
             "geometry": {
                 "type": "Polygon",
@@ -34521,12 +34559,12 @@
                 "Zona": "O1",
                 "NumTerreno": 22,
                 "EstadoVenta": "Disponible",
-                "AreaTerreno": 922.79,
+                "AreaTerreno": 825.08,
                 "Perimetro": 132.44,
-                "Frente": 19.9,
-                "Derecha": 48.35,
-                "Izquierda": 43.65,
-                "Fondo": 20.54
+                "Frente": 19.98,
+                "Derecha": 43.65,
+                "Izquierda": 38.23,
+                "Fondo": 21
             },
             "geometry": {
                 "type": "Polygon",
@@ -35986,7 +36024,7 @@
                     ]
                 ]
             },
-            "id": 72
+            "id": 64
         },
         {
             "type": "Feature",
@@ -40860,12 +40898,12 @@
                 "NumTerreno": 6,
                 "Zona": "Q1",
                 "EstadoVenta": "Disponible",
-                "AreaTerreno": 545.16,
+                "AreaTerreno": 495.45,
                 "Perimetro": 100.3,
-                "Frente": 15.58,
-                "Derecha": 35.34,
-                "Izquierda": 33.45,
-                "Fondo": 15.93
+                "Frente": 15.54,
+                "Derecha": 33.45,
+                "Izquierda": 30.79,
+                "Fondo": 15.27
             },
             "geometry": {
                 "type": "Polygon",
@@ -42899,7 +42937,8 @@
                 "fid": 87,
                 "TipoTerreno": "Lote",
                 "Zona": "R1",
-                "NumTerreno": 4
+                "NumTerreno": 4,
+                "EstadoVenta": "Aporte"
             },
             "geometry": {
                 "type": "Polygon",
@@ -43908,7 +43947,7 @@
                     ]
                 ]
             },
-            "id": 86
+            "id": 78
         },
         {
             "type": "Feature",
@@ -43916,7 +43955,8 @@
                 "fid": 88,
                 "TipoTerreno": "Lote",
                 "Zona": "R1",
-                "NumTerreno": 3
+                "NumTerreno": 3,
+                "EstadoVenta": "Aporte"
             },
             "geometry": {
                 "type": "Polygon",
@@ -44925,7 +44965,7 @@
                     ]
                 ]
             },
-            "id": 87
+            "id": 79
         },
         {
             "type": "Feature",
@@ -44934,7 +44974,7 @@
                 "TipoTerreno": "Lote",
                 "Zona": "R1",
                 "NumTerreno": 2,
-                "EstadoVenta": ""
+                "EstadoVenta": "Aporte"
             },
             "geometry": {
                 "type": "Polygon",
@@ -45463,7 +45503,7 @@
                     ]
                 ]
             },
-            "id": 88
+            "id": 80
         },
         {
             "type": "Feature",
@@ -45471,7 +45511,8 @@
                 "fid": 91,
                 "TipoTerreno": "Lote",
                 "Zona": "R1",
-                "NumTerreno": 7
+                "NumTerreno": 7,
+                "EstadoVenta": "Aporte"
             },
             "geometry": {
                 "type": "Polygon",
@@ -46240,7 +46281,7 @@
                     ]
                 ]
             },
-            "id": 90
+            "id": 81
         },
         {
             "type": "Feature",
@@ -46248,7 +46289,8 @@
                 "fid": 92,
                 "TipoTerreno": "Lote",
                 "Zona": "R1",
-                "NumTerreno": 5
+                "NumTerreno": 5,
+                "EstadoVenta": "Aporte"
             },
             "geometry": {
                 "type": "Polygon",
@@ -47137,7 +47179,7 @@
                     ]
                 ]
             },
-            "id": 91
+            "id": 82
         },
         {
             "type": "Feature",
@@ -47145,7 +47187,8 @@
                 "fid": 93,
                 "TipoTerreno": "Lote",
                 "Zona": "R1",
-                "NumTerreno": 6
+                "NumTerreno": 6,
+                "EstadoVenta": "Aporte"
             },
             "geometry": {
                 "type": "Polygon",
@@ -47914,7 +47957,7 @@
                     ]
                 ]
             },
-            "id": 92
+            "id": 83
         },
         {
             "type": "Feature",
@@ -54124,7 +54167,8 @@
                 "fid": 101,
                 "TipoTerreno": "Lote",
                 "Zona": "R1",
-                "NumTerreno": 8
+                "NumTerreno": 8,
+                "EstadoVenta": "Aporte"
             },
             "geometry": {
                 "type": "Polygon",
@@ -54167,7 +54211,7 @@
                 "TipoTerreno": "Lote",
                 "Zona": "R1",
                 "NumTerreno": 1,
-                "EstadoVenta": ""
+                "EstadoVenta": "Aporte"
             },
             "geometry": {
                 "type": "Polygon",
@@ -55056,7 +55100,7 @@
                     ]
                 ]
             },
-            "id": 101
+            "id": 92
         },
         {
             "type": "Feature",
@@ -56938,7 +56982,8 @@
                 "fid": 109,
                 "TipoTerreno": "Lote",
                 "Zona": "S1",
-                "NumTerreno": 1
+                "NumTerreno": 1,
+                "EstadoVenta": "Reservorio"
             },
             "geometry": {
                 "type": "Polygon",
@@ -58187,7 +58232,7 @@
                     ]
                 ]
             },
-            "id": 108
+            "id": 99
         },
         {
             "type": "Feature",
@@ -64086,7 +64131,7 @@
                     ]
                 ]
             },
-            "id": 120
+            "id": 110
         },
         {
             "type": "Feature",
@@ -66247,7 +66292,7 @@
                     ]
                 ]
             },
-            "id": 124
+            "id": 114
         },
         {
             "type": "Feature",
@@ -66257,7 +66302,8 @@
                 "Zona": "M1",
                 "NumTerreno": 6,
                 "EstadoVenta": "Entregado",
-                "AreaTerreno": ""
+                "AreaTerreno": "",
+                "Frente": ""
             },
             "geometry": {
                 "type": "Polygon",
@@ -67857,7 +67903,8 @@
                 "Frente": 19.92,
                 "Derecha": 28.09,
                 "Izquierda": 28.18,
-                "Fondo": 33.48
+                "Fondo": 33.48,
+                "name": ""
             },
             "geometry": {
                 "type": "Polygon",
@@ -68554,7 +68601,7 @@
                     ]
                 ]
             },
-            "id": 129
+            "id": 119
         },
         {
             "type": "Feature",
@@ -68562,7 +68609,8 @@
                 "fid": 131,
                 "TipoTerreno": "Lote",
                 "Zona": "R1",
-                "NumTerreno": 9
+                "NumTerreno": 9,
+                "Perimetro": "Aporte"
             },
             "geometry": {
                 "coordinates": [
@@ -68596,7 +68644,9 @@
         {
             "type": "Feature",
             "properties": {
-                "name": "Parque"
+                "name": "Parque",
+                "fid": "",
+                "TipoTerreno": ""
             },
             "geometry": {
                 "coordinates": [
@@ -68631,6 +68681,159 @@
                 ],
                 "type": "Point"
             }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "fid": 132,
+                "TipoTerreno": "Lote",
+                "NumTerreno": 21,
+                "Zona": "Q1",
+                "EstadoVenta": "Disponible",
+                "AreaTerreno": 4834.55,
+                "Izquierda": 37.67,
+                "Frente": 125.94,
+                "Derecha": 52.46,
+                "Fondo": 75.36,
+                "Perimetro": 291.43
+            },
+            "geometry": {
+                "coordinates": [
+                    [
+                        [
+                            -76.96505260519332,
+                            -12.12860869145949
+                        ],
+                        [
+                            -76.9650980507353,
+                            -12.128587057721305
+                        ],
+                        [
+                            -76.96515255889831,
+                            -12.128552975971232
+                        ],
+                        [
+                            -76.96527361772657,
+                            -12.128521992557737
+                        ],
+                        [
+                            -76.96551712901577,
+                            -12.128339597412236
+                        ],
+                        [
+                            -76.96557036954763,
+                            -12.128324725362745
+                        ],
+                        [
+                            -76.96563628639647,
+                            -12.128327823707437
+                        ],
+                        [
+                            -76.9656629066624,
+                            -12.12833711873833
+                        ],
+                        [
+                            -76.96569157144451,
+                            -12.128357687706355
+                        ],
+                        [
+                            -76.96571248736792,
+                            -12.128375658096601
+                        ],
+                        [
+                            -76.96574291052885,
+                            -12.128417175893375
+                        ],
+                        [
+                            -76.96574734724022,
+                            -12.12843452661211
+                        ],
+                        [
+                            -76.96573530473881,
+                            -12.12850640814817
+                        ],
+                        [
+                            -76.96574100908136,
+                            -12.128589443693002
+                        ],
+                        [
+                            -76.96576699553171,
+                            -12.12867805622325
+                        ],
+                        [
+                            -76.96583943976583,
+                            -12.12876744177855
+                        ],
+                        [
+                            -76.96543068124383,
+                            -12.129164009396789
+                        ],
+                        [
+                            -76.96517910079729,
+                            -12.128926559038476
+                        ],
+                        [
+                            -76.96489683787925,
+                            -12.128850924986722
+                        ],
+                        [
+                            -76.96505260519332,
+                            -12.12860869145949
+                        ]
+                    ]
+                ],
+                "type": "Polygon"
+            },
+            "id": 124
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "fid": 133,
+                "TipoTerreno": "Lote",
+                "NumTerreno": 22,
+                "Zona": "Q1",
+                "EstadoVenta": "Disponible",
+                "AreaTerreno": 1114.75,
+                "Frente": 15,
+                "Derecha": 61,
+                "Izquierda": 52.46,
+                "Fondo": 15.22,
+                "name": "",
+                "Perimetro": 143.68
+            },
+            "geometry": {
+                "coordinates": [
+                    [
+                        [
+                            -76.96584150484948,
+                            -12.128782168247369
+                        ],
+                        [
+                            -76.96593376974594,
+                            -12.12884904461265
+                        ],
+                        [
+                            -76.96593058819772,
+                            -12.12902323413823
+                        ],
+                        [
+                            -76.96555834706456,
+                            -12.12926429981107
+                        ],
+                        [
+                            -76.9654406297833,
+                            -12.129167873568122
+                        ],
+                        [
+                            -76.96584150484948,
+                            -12.128782168247369
+                        ]
+                    ]
+                ],
+                "type": "Polygon"
+            },
+            "id": 125
         }
     ]
 }

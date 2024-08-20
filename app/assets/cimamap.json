@@ -55,10 +55,14 @@
             "properties": {
                 "fid": 2,
                 "NumTerreno": 18,
-                "EstadoVenta": "Entregado",
+                "EstadoVenta": "Disponible",
                 "AreaTerreno": 1595.48,
                 "TipoTerreno": "Lote",
-                "Perimetro": ""
+                "Perimetro": "",
+                "Frente": 31.62,
+                "Fondo": 24.99,
+                "Izquierda": 65.42,
+                "Derecha": 53.29
             },
             "geometry": {
                 "type": "Polygon",
@@ -4735,11 +4739,11 @@
                 "AreaTerreno": 1188.7,
                 "EstadoVenta": "Disponible",
                 "TipoTerreno": "Lote",
-                "Derecha": 46.25,
-                "Izquierda": 45.66,
+                "Derecha": 52.9,
+                "Izquierda": 47.7,
                 "Fondo": 23.71,
                 "Perimetro": 148.15,
-                "Frente": 25.09
+                "Frente": 23.84
             },
             "geometry": {
                 "type": "Polygon",
