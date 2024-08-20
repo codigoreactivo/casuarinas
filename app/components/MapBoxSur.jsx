@@ -129,9 +129,9 @@ const MapBoxComponent = () => {
                                 'icon-image': [
                                     'case',
                                     ['==', ['get', 'EstadoVenta'], 'Disponible'], 'icon-Disponible',
-                                    ['==', ['get', 'EstadoVenta'], 'Vendido'], 'icon-Vendido',
+                                    ['==', ['get', 'EstadoVenta'], 'Aporte'], 'icon-Entregado',
                                     ['==', ['get', 'EstadoVenta'], 'Entregado'], 'icon-Entregado',
-                                    ['==', ['get', 'EstadoVenta'], 'Reservado'], 'icon-Reservado',
+                                    ['==', ['get', 'EstadoVenta'], 'Reservorio'], 'icon-Entregado',
                                     ''
                                 ],
                                 'icon-size': 0.6,

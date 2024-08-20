@@ -68610,7 +68610,7 @@
                 "TipoTerreno": "Lote",
                 "Zona": "R1",
                 "NumTerreno": 9,
-                "Perimetro": "Aporte"
+                "EstadoVenta": "Aporte"
             },
             "geometry": {
                 "coordinates": [
