@@ -3200,7 +3200,7 @@
                 "TipoTerreno": "Lote",
                 "Perimetro": 163.19,
                 "Fondo": 26.92,
-                "Izquierda": 54.43,
+                "Izquierda": 64.43,
                 "Derecha": 51.82,
                 "Frente": 30.02
             },
@@ -10168,7 +10168,7 @@
                 "fid": 19,
                 "NumTerreno": 3,
                 "EstadoVenta": "Disponible",
-                "AreaTerreno": 1383.36,
+                "AreaTerreno": 1393.36,
                 "TipoTerreno": "Lote",
                 "Perimetro": 172.31,
                 "Fondo": 25,

@@ -28,12 +28,19 @@ const MapBoxComponent = () => {
     useEffect(() => {
         if (map.current) return; // initialize map only once
 
+        const bounds = [
+            [-76.975, -12.135], // Suroeste
+            [-76.955, -12.115]  // Noreste
+        ];
+
         map.current = new mapboxgl.Map({
             container: mapContainer.current,
             style: 'mapbox://styles/jesusjhoel/clyqqe2su02cz01p87l2xa3s1',
             center: [lng, lat],
             zoom: zoom,
             pitch: pitch, // Inicializa el pitch
+            maxBounds: bounds // Establecer los límites del mapa
+
         });
 
         map.current.on('load', () => {
@@ -89,7 +96,8 @@ const MapBoxComponent = () => {
                 "Disponible": "icons/flag-cas-green.png",
                 "Vendido": "icons/flag-cas-orange.png",
                 "Entregado": "icons/flag-cas-orange.png",
-                "Reservado": "icons/flag-y-map.png"
+                "Reservado": "icons/flag-y-map.png",
+                "Separado": "icons/flag-b-map.png"
             };
 
             // Función para cargar todas las imágenes
@@ -132,6 +140,7 @@ const MapBoxComponent = () => {
                                     ['==', ['get', 'EstadoVenta'], 'Aporte'], 'icon-Entregado',
                                     ['==', ['get', 'EstadoVenta'], 'Entregado'], 'icon-Entregado',
                                     ['==', ['get', 'EstadoVenta'], 'Reservorio'], 'icon-Entregado',
+                                    ['==', ['get', 'EstadoVenta'], 'Separado'], 'icon-Separado',
                                     ''
                                 ],
                                 'icon-size': 0.6,

@@ -69312,7 +69312,7 @@
                 "TipoTerreno": "Lote",
                 "NumTerreno": 22,
                 "Zona": "Q1",
-                "EstadoVenta": "Disponible",
+                "EstadoVenta": "Separado",
                 "AreaTerreno": 1114.75,
                 "Frente": 15,
                 "Derecha": 61,
@@ -70448,7 +70448,7 @@
                 ],
                 "type": "Polygon"
             },
-            "id": 133
+            "id": 122
         },
         {
             "type": "Feature",
