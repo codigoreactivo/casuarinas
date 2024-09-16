@@ -34,8 +34,8 @@ const MapBoxComponent = () => {
         if (map.current) return; // initialize map only once
 
         const bounds = [
-            [-76.975, -12.135], // Suroeste
-            [-76.955, -12.115]  // Noreste
+            [-76.97905, -12.12401], // Suroeste (Inferior Izquierda)
+            [-76.95954, -12.11217]  // Noreste (Superior Derecha)
         ];
 
         map.current = new mapboxgl.Map({
