@@ -27,10 +27,9 @@ const MapBoxComponent = () => {
 
     useEffect(() => {
         if (map.current) return; // initialize map only once
-
         const bounds = [
-            [-76.979497, -12.131475], // Suroeste (Inferior Izquierda)
-            [-76.960833, -12.120414]  // Noreste (Superior Derecha)
+            [-76.97745712412208, -12.127078413301172], // Suroeste (Inferior izquierda, ajustado un 30%)
+            [-76.9691777025009, -12.120803084792478]   // Noreste (Superior derecha, ajustado un 20%)
         ];
 
         map.current = new mapboxgl.Map({
