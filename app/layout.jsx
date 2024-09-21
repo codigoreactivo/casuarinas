@@ -1,9 +1,8 @@
 import { Inter } from "next/font/google";
 import "../styles/globals.css";
 import NavBar from "./components/NavBar";
-import { Montserrat } from 'next/font/google';
 
-const bebas_neue = Montserrat({
+const bebas_neue = Inter({
   subsets: ['latin'],
   weight: ["400"],
   variable: '--font-bebas-neue',

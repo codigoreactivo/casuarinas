@@ -33,20 +33,12 @@ const MapBoxComponent = () => {
     useEffect(() => {
         if (map.current) return; // initialize map only once
 
-        const bounds = [
-            [-76.97628220805235, -12.122708073341016], // Suroeste (Inferior izquierda, ajustado un 12% más a la izquierda)
-            [-76.96550926421797, -12.11431831704597]   // Noreste (Superior derecha)
-        ];
-
-
         map.current = new mapboxgl.Map({
             container: mapContainer.current,
-            style: 'mapbox://styles/jesusjhoel/clyqqe2su02cz01p87l2xa3s1',
+            style: 'mapbox://styles/mapbox/streets-v12',
             center: [lng, lat],
             zoom: zoom,
             pitch: pitch, // Inicializa el pitch
-            maxBounds: bounds // Establecer los límites del mapa
-
         });
 
         map.current.on('load', () => {
@@ -68,8 +60,8 @@ const MapBoxComponent = () => {
                         ['boolean', ['feature-state', 'focus'], false], // Si está clicked
                         '#808080', // Color para el estado clicked
                         ['boolean', ['feature-state', 'hover'], false], // Si está hover
-                        '#fff', // Color para el estado hover
-                        '#fff' // Color por defecto
+                        '#2E603B', // Color para el estado hover
+                        '#2E603B' // Color por defecto
 
                     ],
                     'fill-opacity': [
@@ -78,7 +70,7 @@ const MapBoxComponent = () => {
                         0.9, // Opacidad para el estado clicked
                         ['boolean', ['feature-state', 'hover'], false], // Si está hover
                         0.7, // Opacidad para el estado hover
-                        0.5, // Opacidad por defecto
+                        0.4, // Opacidad por defecto
 
                     ],
                     'fill-outline-color': '#000000', // El borde permanece igual

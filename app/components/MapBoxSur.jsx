@@ -3,9 +3,11 @@ import React, { useRef, useEffect, useState } from 'react';
 import mapboxgl from '!mapbox-gl'; // eslint-disable-line import/no-webpack-loader-syntax
 import * as turf from '@turf/turf'; // Importar turf
 import geojson from '../assets/surmap.json';
+import frontiersGeojson from '../assets/frontiers.json';
 import StatusProp from './StatusProp';
 import PopupProp from './PopupProp';
 import MapControls from './MapControls'; // Asegúrate de que la ruta sea correcta
+import { type } from 'os';
 
 mapboxgl.accessToken = 'pk.eyJ1IjoiamVzdXNqaG9lbCIsImEiOiJjbHhtbjQ4Y2MwN3duMnFwbDF1aXE2MG8zIn0.Vq7TZeCb2LprzzOASGi25Q';
 const numbrokers = "https://api.whatsapp.com/send?phone=51968819199";
@@ -27,19 +29,13 @@ const MapBoxComponent = () => {
 
     useEffect(() => {
         if (map.current) return; // initialize map only once
-        const bounds = [
-            [-76.97745712412208, -12.127078413301172], // Suroeste (Inferior izquierda, ajustado un 30%)
-            [-76.9691777025009, -12.120803084792478]   // Noreste (Superior derecha, ajustado un 20%)
-        ];
 
         map.current = new mapboxgl.Map({
             container: mapContainer.current,
-            style: 'mapbox://styles/jesusjhoel/clyqqe2su02cz01p87l2xa3s1',
+            style: 'mapbox://styles/mapbox/streets-v12',
             center: [lng, lat],
             zoom: zoom,
             pitch: pitch, // Inicializa el pitch
-            maxBounds: bounds // Establecer los límites del mapa
-
         });
 
         map.current.on('load', () => {
@@ -64,8 +60,8 @@ const MapBoxComponent = () => {
                         //'#808080', // Color para el estado clicked
                         //['boolean', ['feature-state', 'focus'], false], // Si está clicked
                         ['boolean', ['feature-state', 'hover'], false], // Si está hover
-                        '#fff', // Color para el estado hover
-                        '#fff' // Color por defecto
+                        '#2E603B', // Color para el estado hover
+                        '#2E603B' // Color por defecto
                     ],
                     'fill-opacity': [
                         'case',
@@ -89,6 +85,7 @@ const MapBoxComponent = () => {
                     'line-width': 2 // Ajusta este valor para cambiar el grosor del borde
                 }
             });
+
 
             // Define el mapeo de imágenes fuera de la función
             const imageMapping = {
@@ -216,6 +213,75 @@ const MapBoxComponent = () => {
             });
 
             let hoveredStateId = null;
+
+            // Add the second GeoJSON source
+            map.current.addSource('frontiers', {
+                type: 'geojson',
+                data: frontiersGeojson // Replace with your actual GeoJSON data for frontiers
+            });
+            // Add a layer for the second GeoJSON source
+            // Reemplaza esta parte de tu código existente:
+            map.current.addLayer({
+                id: 'frontiers-layer',
+                type: 'line',
+                source: 'frontiers',
+                layout: {
+                    'line-join': 'round',
+                    'line-cap': 'round'
+                },
+                paint: {
+                    'line-color': 'red',
+                    'line-width': 2
+                }
+            });
+
+            // Con el siguiente código para animar el dasharray:
+            const dashArraySequence = [
+                [0, 4, 3],
+                [0.5, 4, 2.5],
+                [1, 4, 2],
+                [1.5, 4, 1.5],
+                [2, 4, 1],
+                [2.5, 4, 0.5],
+                [3, 4, 0],
+                [0, 0.5, 3, 3.5],
+            ];
+
+            let step = 0;
+
+            map.current.addLayer({
+                id: 'frontiers-layer',
+                type: 'line',
+                source: 'frontiers',
+                layout: {
+                    'line-join': 'round',
+                    'line-cap': 'round'
+                },
+                paint: {
+                    'line-color': 'red',
+                    'line-width': 2,
+                    'line-dasharray': dashArraySequence[0], // Iniciar con el primer paso
+                }
+            });
+
+            // Función para animar el dasharray
+            function animateDashArray(timestamp) {
+                const newStep = parseInt((timestamp / 2000) % dashArraySequence.length);
+
+                if (newStep !== step) {
+                    map.current.setPaintProperty(
+                        'frontiers-layer', // Asegúrate de que coincida con el ID de la capa
+                        'line-dasharray',
+                        dashArraySequence[newStep] // Usar el nuevo paso
+                    );
+                    step = newStep;
+                }
+
+                requestAnimationFrame(animateDashArray);
+            }
+
+            // Iniciar la animación
+            animateDashArray(0);
 
             map.current.on('mousemove', 'places', (e) => {
                 map.current.getCanvas().style.cursor = 'pointer';

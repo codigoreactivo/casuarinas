@@ -31,8 +31,9 @@ const SideBarMenu = () => {
                     </button>
                     {/*<Link href="/">Inicio</Link>
                     <Link href="/casuarinas-norte">Dashboard</Link>
-                    <Link href="/example">Ejemplo</Link>
+                    
                     <Link href="/casuarinas-norte">Proyectos</Link>*/}
+                    <Link href="/example">Ejemplo</Link>
                     <Link href="/casuarinas-sur">Casuarinas Sur</Link>
                     <Link href="/casuarinas-la-cima">Casuarinas La Cima</Link>
                     {/*<Link href="/">Mapas</Link>
@@ -41,9 +42,10 @@ const SideBarMenu = () => {
             </div>
 
             {/* Use any element to open the sidenav */}
-            <div className=' flex cursor-pointer justify-center items-center  gap-2 rounded-xl border-[1px] px-4 py-2 border-white hover:bg-white hover:text-black transition-all ease-in duration-300 focus:bg-white focus:text-black' onClick={openNav}><RiMenu2Fill /><p className='leading-none p-0 mt-1 self-end flex'>Menu</p></div>
+            <div className=' flex cursor-pointer justify-center items-center  gap-2 rounded-lg  px-4 py-2 border border-white/30 hover:bg-white hover:text-black transition-all ease-in duration-300 focus:bg-white focus:text-black' onClick={openNav}><RiMenu2Fill /><p className='leading-none p-0 mt-1 self-end flex'>Menu</p></div>
 
         </div>
+
     );
 };
 
