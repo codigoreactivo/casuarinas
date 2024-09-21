@@ -30,7 +30,7 @@ const NavBar = () => {
             <img src="/logocasuarinas.png" alt="" className=" w-24" />
             <div className=" text-left">
               <h1 className="font-regular text-lg font-semibold">Casuarinas Grupo</h1>
-              <p className="text-xs font-light text-white/85">Mapa Inreractivo: Vista de Lotes</p>
+              <p className="text-xs font-light text-white/85">Mapa Interactivo: Vista de Lotes</p>
             </div>
           </div>
         </Link>
