@@ -93,7 +93,7 @@ const MapBoxComponent = () => {
                 "Vendido": "icons/flag-cas-orange.png",
                 "Entregado": "icons/flag-cas-orange.png",
                 "Reservado": "icons/flag-y-map.png",
-                "Separado": "icons/flag-b-map.png"
+                "Separado": "icons/flag-grey-map.png"
             };
 
             // Función para cargar todas las imágenes
