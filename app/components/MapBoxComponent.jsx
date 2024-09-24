@@ -35,7 +35,7 @@ const MapBoxComponent = () => {
 
         map.current = new mapboxgl.Map({
             container: mapContainer.current,
-            style: 'mapbox://styles/mapbox/streets-v12',
+            style: 'mapbox://styles/jesusjhoel/clyqqe2su02cz01p87l2xa3s1',
             center: [lng, lat],
             zoom: zoom,
             pitch: pitch, // Inicializa el pitch
@@ -60,8 +60,8 @@ const MapBoxComponent = () => {
                         ['boolean', ['feature-state', 'focus'], false], // Si está clicked
                         '#808080', // Color para el estado clicked
                         ['boolean', ['feature-state', 'hover'], false], // Si está hover
-                        '#2E603B', // Color para el estado hover
-                        '#2E603B' // Color por defecto
+                        '#fff', // Color para el estado hover
+                        '#fff' // Color por defecto
 
                     ],
                     'fill-opacity': [

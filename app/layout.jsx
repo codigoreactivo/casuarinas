@@ -20,7 +20,7 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body id="main" className={bebas_neue.className}>
 
-        <main > <NavBar />
+        <main >
 
         </main>
         {children}
