@@ -388,7 +388,7 @@ const MapBoxComponent = () => {
         console.log('Home button pressed');
         map.current.easeTo({
             center: [-76.9660444, -12.1265788],
-            zoom: 16.5,
+            zoom: 16,
             pitch: 0,
             duration: 1000 // Duración de la animación en ms
         });
