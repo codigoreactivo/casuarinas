@@ -2,7 +2,7 @@
 
 import React, { useRef, useEffect, useState } from 'react';
 import StatusProp from './StatusProp';
-import PopupProp from './PopupProp';
+import PopupProp2 from './PopupProp2';
 import MapControls from './MapControls';
 import mapboxgl from '!mapbox-gl'; // eslint-disable-line import/no-webpack-loader-syntax
 import * as turf from '@turf/turf'; // Importar turf
@@ -439,7 +439,7 @@ const MapBoxComponent = () => {
     return (
         <div className='relative h-full overflow-hidden'>
             <div ref={mapContainer} className="map-container h-full" />
-            <PopupProp popupContent={popupContent} setPopupContent={setPopupContent} numbrokers={numbrokers} />
+            <PopupProp2 popupContent={popupContent} setPopupContent={setPopupContent} numbrokers={numbrokers} />
             <StatusProp />
             <MapControls
                 onHome={handleHome}

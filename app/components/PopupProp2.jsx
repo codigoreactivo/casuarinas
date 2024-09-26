@@ -12,7 +12,7 @@ const PopupProp = ({ popupContent, setPopupContent, numbrokers }) => {
                 <button className="text-3xl bg-green-100 rounded-full p-1 text-green-950 hover:bg-green-950 hover:text-green-200 duration-300 transition-all ease-linear" onClick={() => setPopupContent(null)}><BsX /></button>
             </div>
             <div className="popup-content h-auto flex flex-col gap-2 py-4">
-                <h2 className='font-extrabold text-2xl'>Casuarinas Sur</h2>
+                <h2 className='font-extrabold text-2xl'>Casurinas La Cima</h2>
                 {popupContent.zona && (
                     <div className=' flex gap-2 font-semibold text-2xl text-green-900'>
                         <h2>Zona:</h2>
