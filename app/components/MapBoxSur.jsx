@@ -21,7 +21,7 @@ const MapBoxComponent = () => {
     const map = useRef(null);
     const [lng, setLng] = useState(-76.9660444);
     const [lat, setLat] = useState(-12.1265788);
-    const [zoom, setZoom] = useState(16.5);
+    const [zoom, setZoom] = useState(15.9);
     const [pitch, setPitch] = useState(0); // Estado para el pitch
     const [popupContent, setPopupContent] = useState(null);
     const [clickedStateId, setClickedStateId] = useState(null);
