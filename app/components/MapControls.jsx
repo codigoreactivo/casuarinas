@@ -4,7 +4,7 @@ import { IoMdHome, IoIosArrowBack, IoIosArrowForward, IoIosArrowUp, IoIosArrowDo
 const MapControls = ({ onHome, onMoveLeft, onMoveRight, onMoveUp, onMoveDown, onZoomIn, onZoomOut, onExpand, onPitchUp, onPitchDown }) => {
 
     return (
-        <div className='w-fit flex flex-col md:flex-row  absolute gap-3 z-10 bottom-4 justify-center items-center left-0 right-0 mx-auto'>
+        <div className='w-fit flex flex-col md:flex-row  absolute gap-3 z-10 bottom-9 lg:bottom-4 justify-center items-center left-0 right-0 mx-auto'>
             <div className=' flex gap-3'>
                 <button className="rounded-full p-3 bg-white text-2xl flex flex-col justify-center items-center transition-all duration-300 ease-out hover:bg-black hover:text-white" onClick={onHome}><IoMdHome /></button>
                 <button className="rounded-full p-3 bg-white text-2xl flex flex-col justify-center items-center transition-all duration-300 ease-out hover:bg-black hover:text-white" onClick={onMoveLeft}><IoIosArrowBack /></button>
