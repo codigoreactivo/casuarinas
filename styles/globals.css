@@ -1,8 +1,6 @@
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
 
 /*CUSTOM SCROLL BAR*/
 /* width */
@@ -26,24 +24,25 @@
 }
 
 .map-container {
-   
-    width: 100vw;
-    height: 100vh;
-    cursor: grabbing;
-    cursor: -webkit-grab;
-    cursor: -moz-grab;
-  }
-.mapboxgl-canvas-container{
+  width: 100vw;
   height: 100vh;
-
+  cursor: grabbing;
+  cursor: -webkit-grab;
+  cursor: -moz-grab;
+  position: absolute !important;
+  bottom: 0;
 }
-.mapboxgl-ctrl-bottom-right{
-    display: none;
+.mapboxgl-canvas-container {
+  height: 100vh;
+  position: absolute;
+}
+.mapboxgl-ctrl-bottom-right {
+  display: none;
 }
 .popup {
-    max-width: 420px;
-    border: 1px solid #ccc;
-  }
+  max-width: 420px;
+  border: 1px solid #ccc;
+}
 /* The side navigation menu */
 .sidenav {
   height: 100%; /* 100% Full-height */
@@ -90,15 +89,18 @@
 
 /* Style page content - use this if you want to push the page content to the right when you open the side navigation */
 #main {
-  transition: margin-left .5s;
+  transition: margin-left 0.5s;
 }
 
 /* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
 @media screen and (max-height: 450px) {
-  .sidenav {padding-top: 15px;}
-  .sidenav a {font-size: 18px;}
+  .sidenav {
+    padding-top: 15px;
+  }
+  .sidenav a {
+    font-size: 18px;
+  }
 }
-
 
 .marker {
   border-radius: 50%;
@@ -106,5 +108,3 @@
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
   width: 100%;
 }
-
-
