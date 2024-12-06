@@ -29,11 +29,9 @@
   cursor: grabbing;
   cursor: -webkit-grab;
   cursor: -moz-grab;
-  position: absolute !important;
-  bottom: 0;
 }
 .mapboxgl-canvas-container {
-  height: 100vh;
+  height: 100dvh;
   position: absolute;
 }
 .mapboxgl-ctrl-bottom-right {
