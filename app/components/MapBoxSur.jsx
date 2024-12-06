@@ -137,6 +137,7 @@ const MapBoxComponent = () => {
                                     ['==', ['get', 'EstadoVenta'], 'Entregado'], 'icon-Entregado',
                                     ['==', ['get', 'EstadoVenta'], 'Reservorio'], 'icon-Entregado',
                                     ['==', ['get', 'EstadoVenta'], 'Separado'], 'icon-Separado',
+                                    ['==', ['get', 'EstadoVenta'], 'Vendido'], 'icon-Entregado',
                                     ''
                                 ],
                                 'icon-size': 0.6,
