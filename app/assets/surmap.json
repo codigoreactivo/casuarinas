@@ -3686,7 +3686,7 @@
                 "TipoTerreno": "Lote",
                 "Zona": "P1",
                 "NumTerreno": 14,
-                "EstadoVenta": "Entregado"
+                "EstadoVenta": "Separado"
             },
             "geometry": {
                 "type": "Polygon",
@@ -41561,7 +41561,7 @@
                 "TipoTerreno": "Lote",
                 "NumTerreno": 8,
                 "Zona": "Q1",
-                "EstadoVenta": "Disponible",
+                "EstadoVenta": "Separado",
                 "AreaTerreno": 481.65,
                 "Perimetro": 91.19,
                 "Frente": 18.68,
@@ -68646,7 +68646,7 @@
             "properties": {
                 "fid": 132,
                 "TipoTerreno": "Lote",
-                "NumTerreno": 21,
+                "NumTerreno": 22,
                 "Zona": "Q1",
                 "EstadoVenta": "Disponible",
                 "AreaTerreno": 4834.55,
@@ -69310,7 +69310,7 @@
             "properties": {
                 "fid": 133,
                 "TipoTerreno": "Lote",
-                "NumTerreno": 22,
+                "NumTerreno": 21,
                 "Zona": "Q1",
                 "EstadoVenta": "Separado",
                 "AreaTerreno": 1114.75,

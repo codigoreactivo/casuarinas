@@ -9,7 +9,7 @@ import * as turf from '@turf/turf'; // Importar turf
 
 mapboxgl.accessToken = 'pk.eyJ1IjoiamVzdXNqaG9lbCIsImEiOiJjbHhtbjQ4Y2MwN3duMnFwbDF1aXE2MG8zIn0.Vq7TZeCb2LprzzOASGi25Q';
 
-import geojson from '../assets/cimamap.json';
+import geojson from '../assets/wakama.json';
 
 // Asignar fid como id a cada característica si no está presente
 geojson.features.forEach((feature) => {
@@ -17,15 +17,15 @@ geojson.features.forEach((feature) => {
 });
 
 const numbrokers = "https://api.whatsapp.com/send?phone=51968819199";
-const markerCoordinates = [-76.96470412588647, -12.117731468856704];
+const markerCoordinates = [-76.2784257, -13.2824093];
 console.log('Marker coordinates:', markerCoordinates);
 
 const MapBoxComponent = () => {
     const mapContainer = useRef(null);
     const map = useRef(null);
-    const [lng, setLng] = useState(-76.963683);
-    const [lat, setLat] = useState(-12.118468);
-    const [zoom, setZoom] = useState(17.4);
+    const [lng, setLng] = useState(-76.2784257);
+    const [lat, setLat] = useState(-13.2824093);
+    const [zoom, setZoom] = useState(15.5);
     const [pitch, setPitch] = useState(0); // Estado para el pitch
     const [popupContent, setPopupContent] = useState(null);
     const [clickedStateId, setClickedStateId] = useState(null);
@@ -335,14 +335,14 @@ const MapBoxComponent = () => {
 
     const handleHome = () => {
         map.current.easeTo({
-            center: [-76.963683, -12.118468],
-            zoom: 16.9,
+            center: [-76.2784257, -13.2824093],
+            zoom: 14.5,
             pitch: 0,
             duration: 1000 // Duración de la animación en ms
         });
-        setLng(-76.963683);
-        setLat(-12.118468);
-        setZoom(16.9);
+        setLng(-76.2784257);
+        setLat(-13.2824093);
+        setZoom(14.5);
         setPitch(0);
     };
 
