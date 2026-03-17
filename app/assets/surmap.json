@@ -3686,7 +3686,7 @@
                 "TipoTerreno": "Lote",
                 "Zona": "P1",
                 "NumTerreno": 14,
-                "EstadoVenta": "Separado"
+                "EstadoVenta": "Entregado"
             },
             "geometry": {
                 "type": "Polygon",
@@ -41561,7 +41561,7 @@
                 "TipoTerreno": "Lote",
                 "NumTerreno": 8,
                 "Zona": "Q1",
-                "EstadoVenta": "Separado",
+                "EstadoVenta": "Entregado",
                 "AreaTerreno": 481.65,
                 "Perimetro": 91.19,
                 "Frente": 18.68,
