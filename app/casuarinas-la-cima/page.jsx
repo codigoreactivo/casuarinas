@@ -1,10 +1,10 @@
 import React from 'react'
-import MapBoxComponent from '../components/MapBoxComponent'
+import MapBoxCima from '../components/MapBoxCima'
 
 const LaCima = () => {
     return (
         <div className=' h-full ' style={{ maxHeight: "calc(100vh - 60px)" }}>
-            <MapBoxComponent></MapBoxComponent>
+            <MapBoxCima></MapBoxCima>
         </div>
     )
 }
